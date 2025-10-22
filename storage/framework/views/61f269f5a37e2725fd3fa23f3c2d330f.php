@@ -8,8 +8,13 @@
 <?php $attributes = $attributes->except(\App\View\Components\GuestLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    
-    
+    <h2 style="font-size: 1.5rem; font-weight: 700; text-align: center; margin-bottom: 1rem; color: #343a40;">
+        Lupa Password Anda?
+    </h2>
+
+    <div class="mb-4 text-sm text-gray-600" style="color: #6c757d; font-size: 0.9rem; text-align: center; margin-bottom: 1.5rem;">
+        Tidak masalah. Beri tahu kami alamat email Anda dan kami akan mengirimkan link reset password melalui email yang memungkinkan Anda memilih yang baru.
+    </div>
 
     <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $attributes; } ?>
@@ -32,15 +37,12 @@
 <?php unset($__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5); ?>
 <?php endif; ?>
 
-    
-    
-
-    <form method="POST" action="<?php echo e(route('login')); ?>">
+    <form method="POST" action="<?php echo e(route('password.email')); ?>">
         <?php echo csrf_field(); ?>
 
         <div class="form-group">
-            <label for="email" class="form-label">Email/akun pengguna*</label>
-            <input id="email" class="form-input" type="email" name="email" value="<?php echo e(old('email')); ?>" required autofocus autocomplete="username" />
+            <label for="email" class="form-label">Email</label>
+            <input id="email" class="form-input" type="email" name="email" :value="old('email')" required autofocus placeholder="Masukkan email Anda"/>
             <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['messages' => $errors->get('email'),'class' => 'mt-2 input-error']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -63,59 +65,15 @@
 <?php endif; ?>
         </div>
 
-        <div class="form-group">
-            <label for="password" class="form-label">Password*</label>
-            <div class="password-input-group">
-                <input id="password" class="form-input" type="password" name="password" required autocomplete="current-password"/>
-                
-                
-            </div>
-            <?php if (isset($component)) { $__componentOriginalf94ed9c5393ef72725d159fe01139746 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalf94ed9c5393ef72725d159fe01139746 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-error','data' => ['messages' => $errors->get('password'),'class' => 'mt-2 input-error']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('input-error'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['messages' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($errors->get('password')),'class' => 'mt-2 input-error']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $attributes = $__attributesOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__attributesOriginalf94ed9c5393ef72725d159fe01139746); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalf94ed9c5393ef72725d159fe01139746)): ?>
-<?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
-<?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
-<?php endif; ?>
-        </div>
-
-        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-            <label for="remember_me" class="form-checkbox-label">
-                <input id="remember_me" type="checkbox" class="form-checkbox" name="remember">
-                <span>Ingat saya</span>
-            </label>
-
-            <?php if(Route::has('password.request')): ?>
-                <a class="form-link" href="<?php echo e(route('password.request')); ?>">
-                    Lupa kata sandi?
-                </a>
-            <?php endif; ?>
-        </div>
-
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 2rem;">
             <button type="submit" class="form-button">
-                Masuk
+                Kirim Link Reset Password
             </button>
         </div>
 
-        <?php if(Route::has('register')): ?>
-            <p class="form-footer-text">
-                Belum punya akun? <a href="<?php echo e(route('register')); ?>" class="form-link">Register</a>
-            </p>
-        <?php endif; ?>
+         <p class="form-footer-text">
+             Ingat password Anda? <a href="<?php echo e(route('login')); ?>" class="form-link">Login</a>
+         </p>
     </form>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -127,4 +85,4 @@
 <?php $component = $__componentOriginal69dc84650370d1d4dc1b42d016d7226b; ?>
 <?php unset($__componentOriginal69dc84650370d1d4dc1b42d016d7226b); ?>
 <?php endif; ?>
-<?php /**PATH D:\xampp\htdocs\manajemen-aset\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\xampp\htdocs\manajemen-aset\resources\views/auth/forgot-password.blade.php ENDPATH**/ ?>

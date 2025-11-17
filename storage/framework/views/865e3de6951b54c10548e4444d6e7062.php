@@ -41,7 +41,7 @@
         .login-left-column {
             flex: 1; /* Ambil setengah lebar */
             position: relative;
-            background-image: url('/images/login-bg.jpg'); /* <<-- GANTI GAMBAR GEDUNG/KANTOR */
+            background-image: url('/images/imst.jpg'); /* <<-- GANTI GAMBAR GEDUNG/KANTOR */
             background-size: cover;
             background-position: center;
             color: white;
